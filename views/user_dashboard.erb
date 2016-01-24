@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>PhilWiki - Articles </title>
+	 <link rel="stylesheet" href="/stylesheets/styles.css">
+    <link rel="stylesheet" href="/stylesheets/normalize.css">
+    <link rel="stylesheet" href="/stylesheets/skeleton.css">
+</head>
+<body>
+<h1 class = "welcome"> User Dashboard </h1>
+
+<div class = "container">
+	<div class = "row">
+		<div class = "twelve columns center">
+
+<% if session['user_id'] %>
+	<p> Hello, <%="#{current_user['user_name']}" %>. This is your user dashboard.</p>
+	<img class = "user_image" src = <%="#{current_user['image']}" %> />
+	<br>
+	<p> <%= "#{current_user['profile']}" %> </p>
+	<% else %>
+		<p> You are not logged in </p>
+	<% end %>
+
+		</div>
+	</div>
+</div>
+</body>

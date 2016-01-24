@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title> PhilWiki - users </title>
+	<link rel="stylesheet" href="/stylesheets/styles.css">
+    <link rel="stylesheet" href="/stylesheets/normalize.css">
+    <link rel="stylesheet" href="/stylesheets/skeleton.css">
+</head>
+<body>
+<h1 class = "welcome"> users </h1>
+
+<div class = "container">
+	<% @users.each do |user| %>
+	<div class = "row">
+		<div class = "six columns center">
+				<img class = "user_image" src= "<%= "#{user['image']}" %>" alt = "user_image">
+		</div>
+		<div class = "six columns center">
+				Name: <%="#{user['user_name']}" %>
+				<br>
+				Number of Articles: <%= "#{user['num_articles']}" %> </a> 
+				<br>
+				Profile <%= "#{user['profile']}" %>
+				<br>
+				<a href = "/users/<%= "#{user['id']}" %>">Go to <%="#{user['user_name']}" %>'s Page</a>
+				<br>
+		</div>
+	</div>
+	<br>
+<% end %>
+</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<html>
+
+  <head>
+    <title>Mabuhay sa PhilWiki</title>
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <link rel="stylesheet" href="/stylesheets/normalize.css">
+    <link rel="stylesheet" href="/stylesheets/skeleton.css">
+    <script type="text/javascript" src="/scripts/jquery-2.1.3.js"></script>
+  </head>
+
+  <body>
+  <div class = "top_nav">
+  			<% random_article = rand(1...16).to_s %>
+  		<a class="button button-primary front_nav" href="/articles">Articles</a>
+			<a class = "button button-primary front_nav" href = "/users">users</a>
+			<a class = "button button-primary front_nav" href = "/categories">Categories</a>
+			<a class = "button button-primary front_nav" href = "/articles/<%="#{random_article}" %>"> Random Article! </a>
+			<a class = "button button-primary front_nav" href = "/article/new"> Submit an Article </a> 
+<% if session['user_id'] %>
+          <p> Hello <%= "#{current_user['user_name']}" %>! </p> 
+            <a class = "button button-primary front_nav" href = "/logout"> Logout </a> 
+        <% else %>
+            <a class = "button button-primary front_nav" href = "/login"> Login </a> 
+            <a class = "button button-primary front_nav" href = "/signup"> Sign Up </a> 
+          <% end %>
+			</div>
+    <%= yield %>
+  </body>
+
+</html>

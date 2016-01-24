@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>PhilWiki - Submit an Article </title>
+	 <link rel="stylesheet" href="/stylesheets/styles.css">
+    <link rel="stylesheet" href="/stylesheets/normalize.css">
+    <link rel="stylesheet" href="/stylesheets/skeleton.css">
+</head>
+<body>
+
+<div class = "container">
+	<div class = "row">
+		<div class = "twelve columns">
+        <p> If you want to make any changes with special characters, please submit your changes in Markdown. </p>
+		<form class = "edit" method="post">
+
+			
+				<input type="hidden" name="_method" value="post">'
+				<label for="title">Edit Title</label>
+<textarea class="u-full-width" id="body_input" name="title"><%="#{@article[0]['title']}"%></textarea>
+    		
+    	<input type="hidden" name="_method" value="post">'
+        <label for="category">Update Category</label>
+        <select class="u-full-width" id="category_input" name = "category">
+          <option value="1">Major Locations</option>
+          <option value="2">Popular Food</option>
+          <option value="3">Ghosts and Legends</option>
+          <option value="4">Native Animals</option>
+        </select>
+ 
+
+			
+				<input type="hidden" name="_method" value="post">
+				<label for="body">Edit Body</label>
+    				<textarea class="u-full-width" id="body_input" name="body"><%="#{@article[0]['body']}"%></textarea>
+    		
+
+			
+				<input type="hidden" name="_method" value="post">
+				<label for="image">URL to new image</label>
+    				<textarea class="u-full-width" id="body_input" name="image"><%="#{@article[0]['image']}"%>  </textarea>
+		    	<input class="button-primary" type="submit" value="Submit">
+    		</form>
+
+			</div>
+		</div>
+</div>
+
+
+</body>
+</html>

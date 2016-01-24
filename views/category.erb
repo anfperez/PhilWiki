@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>PhilWiki - <%= "#{@category['title']}" %> </title>
+	<link rel="stylesheet" href="/stylesheets/styles.css">
+    <link rel="stylesheet" href="/stylesheets/normalize.css">
+    <link rel="stylesheet" href="/stylesheets/skeleton.css">
+</head>
+<body>
+<h1 class = "welcome"> <%= "#{@category['title']}" %> </h1>
+<div class = "container">
+	<div class = "row">
+		<div class = "five columns">
+			<img class = "general_image" src= "<%= "#{@category['image']}" %>" alt = "category_image">
+		</div>
+		<div class = "six columns">
+			Number of Articles: <%= "#{@category['num_articles']}" %> 
+		</div>
+	</div>
+</div>
+
+<h1 class = "welcome"> Articles in <%= "#{@category['title']}" %> </h1>
+<div class = "container">
+	<% @articles.each do |article| %>
+	<div class = "row">
+		<div class = "six columns">
+			<img class = "general_image" src= "<%= "#{article['image']}" %>" alt = "article_image">
+		</div>
+	<div class = "six columns center">
+		Title: <%="#{article['title']}" %>
+		<br>
+		user: <%= "#{article['user_name']}" %>
+		<br>
+		<%= "#{article['body']}" %> 
+		<br>
+		<a href = <%= "/articles/#{article['id']}" %> >Go to <%= "#{article['title']}" %> Page</a>
+		</div>
+	</div>
+	<br>
+<% end %>
+</body>
+</html>

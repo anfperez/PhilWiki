@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>PhilWiki - Submit an Article </title>
+	 <link rel="stylesheet" href="/stylesheets/styles.css">
+    <link rel="stylesheet" href="/stylesheets/normalize.css">
+    <link rel="stylesheet" href="/stylesheets/skeleton.css">
+</head>
+<body>
+<div class = "container">
+
+<h1 class = "welcome"> Submit an Article </h1>
+<form method="post">
+  <div class="row">
+    <div class="six columns">
+      <label for="title">Title of Article </label>
+      <input class="u-full-width" name="title" placeholder="Title Here" id="title">
+    </div>
+    <div class="six columns">
+      <label for="image">Image</label>
+      <input class="u-full-width" name="image" placeholder="Link your URL here" id="image_URL">
+    </div>
+    </div>
+   <div class = "row">
+  	<div class="six columns">
+        <label for="category">Category</label>
+        <select class="u-full-width" id="category_input" name = "category">
+          <option value="1">Major Locations</option>
+          <option value="2">Popular Food</option>
+          <option value="3">Ghosts and Legends</option>
+          <option value="4">Native Animals</option>
+        </select>
+      </div>
+      <div class="six columns">
+        <label for="User">User</label>
+        <select class="u-full-width" id="User_input" name = "User">
+          <option value="1">angela_ikbi</option>
+          <option value="2">scarlett_pusa</option>
+          <option value="3">mikey_aso</option>
+          <option value="4">green_butiki</option>
+          <option value ="5"><%= "#{current_user['user_name']}" %></option>
+        </select>
+      </div>
+    </div>
+    <div class = "row">
+    <label for="body">Body</label>
+    <textarea class="u-full-width" placeholder="Type the article here." id="body_input" name = "body"></textarea>
+    </div>
+    <input class="button-primary" type="submit" value="Submit">
+</form>
+
+</div>
+
+
+
+
+
+</body>
+</html>

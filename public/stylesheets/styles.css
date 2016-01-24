@@ -1,0 +1,33 @@
+body {
+	background: url('http://airwheelx.com/wp-content/uploads/2014/11/web-background-images-hd-wallpapers-res-wallpaper-web-page-background-design-blue-pattern-white-cute-hijau-images-hd-wallpapers.jpg');
+}
+
+.general_image {
+	height: 300px;
+	width: 400px;
+	border: 2px solid black;
+}
+
+.welcome {
+	text-align: center;
+}
+
+.front_page {
+	height: 450px;
+}
+
+.top_nav {
+	text-align: center;
+}
+
+.user_image {
+	height: 200px;
+}
+
+.columns{
+	vertical-align: top;
+}
+
+.center {
+	text-align: center;
+}

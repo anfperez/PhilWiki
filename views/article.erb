@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>PhilWiki - Articles </title>
+	 <link rel="stylesheet" href="/stylesheets/styles.css">
+    <link rel="stylesheet" href="/stylesheets/normalize.css">
+    <link rel="stylesheet" href="/stylesheets/skeleton.css">
+</head>
+<body>
+ <h1 class = "welcome"> <%= "#{@article['title']}" %> </h1>
+
+<div class = "container"> 
+	<div class = "row">
+		<div class = "five columns">
+			<img class = "general_image" src= "<%= "#{@article['image']}" %>" alt = "article_image">
+		</div>
+		<div class = "seven columns center">
+			Category:  <%="#{@article['category_title']}" %>
+			<br>
+			Author: <a href = "/users/<%="#{@article['user_name']}"%>"><%= "#{@article['author']}" %></a>
+			<br>
+			<p class = "article_p"> <%= @markdown.render(@article['body']) %> 
+      <br>
+      Last Edited: <%= "#{@article['time_edited']}" %>
+      <br>
+      Browse more articles in <a href = "/categories/<%="#{@article['category']}" %>"><%= "#{@article['category_title']}" %>>></a>
+      <br>
+      <br>
+
+      <a class = "button button-primary front_nav" href = "/articles/edit/<%="#{@article['id']}"%>">Edit this Article</a>
+      <br>
+			</div>
+		</div>
+	</div>
+</div>
+<br>
+
+<h4 class = "welcome"> Comments </h4>
+<div class = "container">
+  <% @comments.each do |comment| %>
+  <div class = "row">
+    <div class = "twelve columns center">
+      E-mail: <%= "#{comment['email']}" %> 
+      <br>
+      Article Rating: <%= "#{comment['rating']}" %>
+      <br>
+      Message: <%= @markdown.render"#{comment['message']}" %> 
+      <p> --- </p>
+    </div>
+  </div>
+  <% end %>
+</div>
+<br>
+
+<h4 class = "welcome"> Leave a comment </h4>
+<form method="post" action="/articles/<%= "#{@article['id']}" %>">
+<div class = "container">
+  <div class="row">
+    <div class="six columns">
+      <label for="email">Your email</label>
+      <input class="u-full-width" type="email" placeholder="test@mailbox.com" name="email" id="exampleEmailInput">
+    </div>
+    <div class="six columns">
+      <label for="rating">Please rate this article from 1-5, 5 being the highest.</label>
+      <select class="u-full-width" name = "rating" id="exampleRecipientInput">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </div>
+  </div>
+  <label for="Message">Message</label>
+  <textarea class="u-full-width" placeholder="Type your message here..." name = "message" id="exampleMessage"></textarea>
+  <label class="example-send-yourself-copy">
+ <input type="hidden" name="article_id" value="<%= "#{@article['id']}" %>">
+  <input class="button-primary" type="submit" value="Submit">
+  </div>
+</form>
+</body>
+</html>

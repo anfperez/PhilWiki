@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>PhilWiki - Articles</title>
+	<link rel="stylesheet" href="/stylesheets/styles.css">
+    <link rel="stylesheet" href="/stylesheets/normalize.css">
+    <link rel="stylesheet" href="/stylesheets/skeleton.css">
+</head>
+</head>
+<body>
+<h1 class = "welcome"> All Articles </h1>
+
+<div class = "container">
+	<% @articles.each do |article| %>
+	<div class = "row">
+		<div class = "six columns">
+				<img class = "general_image" src= "<%= "#{article['image']}" %>" alt = "article_image">
+		</div>
+		<div class = "six columns center">
+				Title: <%="#{article['title']}" %>
+				<br>
+				Category:  <a href = "/categories/<%="#{article['category']}"%>"><%="#{article['category']}" %></a>
+				<br>
+				Author: <a href = "/users/<%="#{article['author']}" %>"><%= "#{article['author']}" %></a>
+				<br>
+				<p> <%= "#{article['body']}" %> </p>
+				<br>
+				<a class="button button-primary front_nav" href="/articles/<%="#{article['id']}" %>"> Go to <%= "#{article['title']}" %> Page</a>
+		</div>
+	</div>
+	<br>
+	<% end %>
+</body>
+</html>
