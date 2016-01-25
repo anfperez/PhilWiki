@@ -121,7 +121,7 @@ get '/' do
   		# conn = PG.connect(dbname: "wiki_project") || PG.connect(ENV['DATABASE_URL'])
   		@id = params['id']
   		@user = conn.exec_params("SELECT * FROM users WHERE id = $1", [params['id']]).first
-  		@articles = conn.exec_params("SELECT * FROM articles WHERE user = $1", [params['id']]).to_a
+  		@articles = conn.exec_params("SELECT * FROM articles WHERE author = $1", [params['id']]).to_a
   		erb :user
   	end
 
