@@ -10,7 +10,7 @@ module Wiki
 
 # defines the method by which a user logs into their account
     def current_user
-      conn = PG.connect(dbname: "wiki_project") || PG.connect(ENV['DATABASE_URL']
+      conn = PG.connect(dbname: "wiki_project") || PG.connect(ENV['DATABASE_URL'])
       if session["user_id"]
         @user ||= conn.exec_params(<<-SQL, [session["user_id"]]).first
           SELECT * FROM users WHERE id = $1
@@ -23,7 +23,7 @@ module Wiki
 
 # defines method that displays the users login name on the top bar
   def logged_in
-    conn = PG.connect(dbname: "wiki_project") || PG.connect(ENV['DATABASE_URL']
+    conn = PG.connect(dbname: "wiki_project") || PG.connect(ENV['DATABASE_URL'])
     current_user
   end
 
@@ -33,7 +33,7 @@ module Wiki
 
   # method to allow existing users to log in 
   post '/login' do 
-    conn = PG.connect(dbname: "wiki_project") || PG.connect(ENV['DATABASE_URL']
+    conn = PG.connect(dbname: "wiki_project") || PG.connect(ENV['DATABASE_URL'])
     @user = conn.exec_params("SELECT * FROM users where user_name = $1", [params[:user_name]]).first
     if @user
       if BCrypt::Password.new(@user["login_password"]) == params[:login_password]
@@ -63,7 +63,7 @@ module Wiki
 
   post '/signup' do
 
-    conn = PG.connect(dbname: "wiki_project") || PG.connect(ENV['DATABASE_URL']
+    conn = PG.connect(dbname: "wiki_project") || PG.connect(ENV['DATABASE_URL'])
     encrypted_password = BCrypt::Password.create(params[:login_password])
     new_user = conn.exec_params(<<-SQL, [params[:user_name], encrypted_password, params[:image], params[:profile]])
     INSERT INTO users (user_name, login_password, image, profile) VALUES ($1, $2, $3, $4) RETURNING id;
@@ -75,20 +75,20 @@ module Wiki
 
 #this is the address for the general index (home page)
 get '/' do 
-  	 conn = PG.connect(dbname: "wiki_project") || PG.connect(ENV['DATABASE_URL']
+  	 conn = PG.connect(dbname: "wiki_project") || PG.connect(ENV['DATABASE_URL'])
   		erb :index
   	end
 
 #address for Categories
   get '/categories' do 
-  		conn = PG.connect(dbname: "wiki_project") || PG.connect(ENV['DATABASE_URL']
+  		conn = PG.connect(dbname: "wiki_project") || PG.connect(ENV['DATABASE_URL'])
   		@categories = conn.exec_params("SELECT * FROM categories").to_a
   		erb :categories
   	end
 
   #this displays the articles that are all located in an individual category
   get '/categories/:id' do 
-  		conn = PG.connect(dbname: "wiki_project") || PG.connect(ENV['DATABASE_URL']
+  		conn = PG.connect(dbname: "wiki_project") || PG.connect(ENV['DATABASE_URL'])
   		@id = params['id']
   		@category = conn.exec_params("SELECT * FROM categories WHERE id = $1", [params['id']]).first
       @articles = conn.exec_params("SELECT * FROM articles WHERE category = $1", [params['id']]).to_a
@@ -98,14 +98,14 @@ get '/' do
 
     #this displays all current users
   	get '/users' do 
-  		conn = PG.connect(dbname: "wiki_project") || PG.connect(ENV['DATABASE_URL']
+  		conn = PG.connect(dbname: "wiki_project") || PG.connect(ENV['DATABASE_URL'])
   		@users = conn.exec_params("SELECT * FROM users").to_a
   		erb :users
   	end
 
   #this displays users individually along with the articles they wrote
   	get '/users/:id' do
-  		conn = PG.connect(dbname: "wiki_project") || PG.connect(ENV['DATABASE_URL']
+  		conn = PG.connect(dbname: "wiki_project") || PG.connect(ENV['DATABASE_URL'])
   		@id = params['id']
   		@user = conn.exec_params("SELECT * FROM users WHERE id = $1", [params['id']]).first
   		@articles = conn.exec_params("SELECT * FROM articles WHERE user = $1", [params['id']]).to_a
@@ -114,7 +114,7 @@ get '/' do
 
   #displays a list of all the articles in the database
   get '/articles' do
-  		conn = PG.connect(dbname: "wiki_project") || PG.connect(ENV['DATABASE_URL']
+  		conn = PG.connect(dbname: "wiki_project") || PG.connect(ENV['DATABASE_URL'])
   		@articles = conn.exec_params("SELECT * FROM articles").to_a
   		@categories = conn.exec_params("SELECT * FROM categories").to_a
   		@users = conn.exec_params("SELECT * FROM users").to_a
@@ -125,7 +125,7 @@ get '/' do
   	get '/articles/:id' do
       @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
   		@id = params['id']
-  		conn = PG.connect(dbname: "wiki_project") || PG.connect(ENV['DATABASE_URL']
+  		conn = PG.connect(dbname: "wiki_project") || PG.connect(ENV['DATABASE_URL'])
   		@article = conn.exec_params("SELECT articles.*, categories.title AS category_title FROM articles INNER JOIN categories ON articles.category = categories.id").first
   		@article = conn.exec_params("SELECT articles.*, users.user_name AS user_name FROM articles INNER JOIN users ON articles.author = users.user_name WHERE articles.id = $1", [@id]).first
       @comments = conn.exec_params("SELECT * FROM comments WHERE article_id = $1", [params['id']]).to_a
@@ -136,7 +136,7 @@ get '/' do
   #allows comments to be inserted into the article
   	post '/articles/:id' do 
       @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
-  		conn = PG.connect(dbname: "wiki_project") || PG.connect(ENV['DATABASE_URL']
+  		conn = PG.connect(dbname: "wiki_project") || PG.connect(ENV['DATABASE_URL'])
       id = params[:id]
   		email = params[:email]
   		rating = params[:rating]
@@ -154,7 +154,7 @@ get '/' do
     #allows new articles to be posted on the website
   	post '/article/new' do 
       @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
-  		conn = PG.connect(dbname: "wiki_project") || PG.connect(ENV['DATABASE_URL']
+  		conn = PG.connect(dbname: "wiki_project") || PG.connect(ENV['DATABASE_URL'])
   		title = params[:title]
       image = params[:image]
   		category = params[:category]
@@ -174,7 +174,7 @@ get '/' do
   #displays the form which allows users to edit existing articles
   get '/articles/edit/:id' do
       @id = params[:id].to_i
-      conn = PG.connect(dbname: "wiki_project") || PG.connect(ENV['DATABASE_URL']
+      conn = PG.connect(dbname: "wiki_project") || PG.connect(ENV['DATABASE_URL'])
       @article = conn.exec_params("SELECT * FROM articles WHERE id = $1", [@id])
       erb :article_edit
     end
@@ -182,7 +182,7 @@ get '/' do
   # allows user to edit existing articles
     post '/articles/edit/:id' do 
       @id = params[:id]
-      conn = PG.connect(dbname: "wiki_project") || PG.connect(ENV['DATABASE_URL']
+      conn = PG.connect(dbname: "wiki_project") || PG.connect(ENV['DATABASE_URL'])
       article = conn.exec_params("SELECT * FROM articles where id = #{@id}").first
 
       title = params["title"] || article["title"]
