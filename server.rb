@@ -121,7 +121,7 @@ get '/' do
   		# conn = PG.connect(dbname: "wiki_project") || PG.connect(ENV['DATABASE_URL'])
   		@id = params['id']
   		@user = conn.exec_params("SELECT * FROM users WHERE id = $1", [params['id']]).first
-  		@articles = conn.exec_params("SELECT * FROM articles WHERE author = $1", [params['id']]).to_a
+  		@articles = conn.exec_params("SELECT * FROM articles INNER JOIN users ON articles.author = users.user_name WHERE users.id = $1", [params['id']]).to_a
   		erb :user
   	end
 
@@ -156,7 +156,7 @@ get '/' do
   		message = params[:message]
   		article_id = params[:article_id]
   		conn.exec_params("INSERT INTO comments (email, rating, message, article_id) VALUES ($1, $2, $3, $4)", [email, rating, message, article_id])
-      redirect '/'
+      redirect '/articles'
     end
 
     #goes to the form that allows new articles to be submitted
