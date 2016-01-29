@@ -25,8 +25,8 @@ CREATE TABLE articles(
  id      SERIAL PRIMARY KEY,
  title    VARCHAR,
  image VARCHAR NOT NULL,
- category INTEGER REFERENCES categories(id),
- author VARCHAR,
+ category INTEGER NOT NULL REFERENCES categories(id),
+ author VARCHAR NOT NULL,
  body VARCHAR NOT NULL,
  time_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
  time_edited TIMESTAMP DEFAULT CURRENT_TIMESTAMP

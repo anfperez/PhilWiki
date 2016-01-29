@@ -139,7 +139,7 @@ get '/' do
       @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
   		@id = params['id']
   		# conn = PG.connect(dbname: "wiki_project") || PG.connect(ENV['DATABASE_URL'])
-  		@article = conn.exec_params("SELECT articles.*, categories.title AS category_title FROM articles LEFT JOIN categories ON articles.category = categories.id").first
+  		@article = conn.exec_params("SELECT articles.*, categories.title AS category_title, users.user_name AS user_name FROM articles LEFT JOIN categories ON articles.category = categories.id LEFT JOIN users ON articles.author = users.user_name WHERE articles.id = $1", [params[:id]]).first
   		# @article = conn.exec_params("SELECT articles.*, users.user_name AS user_name FROM articles INNER JOIN users ON articles.author = users.user_name WHERE articles.id = $1", [@id]).first
       @comments = conn.exec_params("SELECT * FROM comments WHERE article_id = $1", [params['id']]).to_a
       # binding.pry
