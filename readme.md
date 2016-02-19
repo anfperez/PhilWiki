@@ -1,6 +1,6 @@
 <h1> PhilWiki - A Philippines Wiki </h1>
 
-<h2> <a href = "http//www.philwiki.herokuapp.com" alt = "PhilWiki"> PhilWiki on Heroku </a> </h2>
+<h2> <a href = "https://philwiki.herokuapp.com/" alt = "PhilWiki"> PhilWiki on Heroku </a> </h2>
 <p> This is a simple wiki site made for my second project at General Assembly. The wiki contains Philippines-related topics and is intended to be a place where people can share topics with each other. I think my favorite part of this project was styling. I had never used a CSS framework before, so skeleton.css was an easy one for me to start with. </p>
 
 <h2> Technologies Used </h2>
