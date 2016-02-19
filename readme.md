@@ -16,7 +16,7 @@
 <li> getting different URLS to point to the same ERB </li>
 </ul>
 
-<p>Initial wireframe: https://moqups.com/anfperez/wwJsrr66/p:a16b2c2a4 </p>
+<p>Initial wireframe: <img src ="https://moqups.com/anfperez/wwJsrr66/p:a16b2c2a4" alt = "wireframe"> </p>
 
 <p> Flowchart on Trello
 https://trello-attachments.s3.amazonaws.com/569eb64985f829050bf7f700/960x960/5761e0dbab787aace3c13e3258abcd0a/12607237_10101273737631480_893899920_n.jpg </p>
