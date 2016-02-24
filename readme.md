@@ -32,8 +32,11 @@
 <p> Front page </p>
 <img src= "http://i.imgur.com/BFiFL2t.jpg" alt ="front">
 
-<p> Sample user dashboard - logged in </p>
+<p> Sample user dashboard - logged in. User can input username, picture, profile.</p>
 <img src= "http://i.imgur.com/bxF6oSh.png" alt = "logged in">
 
-<p> Submit a new article </p>
+<p> Submit a new article. </p>
 <img src = "http://i.imgur.com/CCosQoW.png" alt = "submit">
+
+<p> Leave a comment on an article with timestamp.</p>
+<img src= "http://i.imgur.com/9p0c84y.jpg" alt = "comment">
