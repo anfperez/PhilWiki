@@ -34,3 +34,6 @@
 
 <p> Sample user dashboard - logged in </p>
 <img src= "http://i.imgur.com/bxF6oSh.png" alt = "logged in">
+
+<p> Submit a new article </p>
+<img src = "http://i.imgur.com/CCosQoW.png" alt = "submit">
