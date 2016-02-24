@@ -27,3 +27,6 @@
 <p> <a href = "https://trello-attachments.s3.amazonaws.com/569eb64985f829050bf7f700/960x960/5761e0dbab787aace3c13e3258abcd0a/12607237_10101273737631480_893899920_n.jpg" alt = "flowchart"> Flowchart on Trello </a></p>
 
 <p> <a href = "https://trello-attachments.s3.amazonaws.com/569ead4805459550ff176179/960x960/eaf5d09c8e71940b5a2f3c0d215c9323/12625800_10101273732142480_1579530612_n.jpg" alt = "ERD">ERD on Trello </a> </p>
+
+<h2> Screenshots </h2>
+<img src= "http://i.imgur.com/BFiFL2t.jpg" alt ="front">
