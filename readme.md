@@ -28,7 +28,7 @@
 
 <p> <a href = "https://trello-attachments.s3.amazonaws.com/569ead4805459550ff176179/960x960/eaf5d09c8e71940b5a2f3c0d215c9323/12625800_10101273732142480_1579530612_n.jpg" alt = "ERD">ERD on Trello </a> </p>
 
-<h2> Screenshots </h2>
+<h2> Sample Screenshots </h2>
 <p> Front page </p>
 <img src= "http://i.imgur.com/BFiFL2t.jpg" alt ="front">
 
@@ -40,3 +40,7 @@
 
 <p> Leave a comment on an article with timestamp.</p>
 <img src= "http://i.imgur.com/9p0c84y.jpg" alt = "comment">
+
+<p> Edit an article </p>
+<img src = "http://i.imgur.com/hJq5uZ8.png" alt = "edit">
+
